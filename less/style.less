@@ -1,0 +1,283 @@
+@base: #343d46;
+@font: #ffffff;
+@link: #95acc3;
+@link-hover: #61b0ff;
+@button: #41505f;
+
+html, body {
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+body {
+	background: @base url('../images/pattern.png') repeat fixed;
+	font-size: 14px;
+	font-family: Verdana;
+}
+
+* {
+	color: @font;
+	text-shadow: 0 -1px #1a2129;
+	box-sizing: border-box;
+}
+
+a {
+	text-decoration: none;
+	border-bottom: 1px solid @link;
+	&:hover {
+		border-color: @link-hover;
+	}
+}
+button, input {
+	background: none;
+	border: none;
+	border-bottom: 2px solid @link;
+	border-radius: none;
+	padding: 5px;
+	outline: none;
+	cursor: pointer;
+	&:not([type="text"]) {
+		&:hover {
+			border-color: @link-hover;
+		}
+		&:active {
+			color: @link;
+		}
+	}
+}
+input[type="text"], textarea {
+	cursor: text;
+	&:active, &:focus {
+		border-color: @link-hover;
+	}
+}
+
+.tooltip{
+	display: inline-block;
+	position: relative;
+}
+.tooltip:before, .tooltip:after {
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity .3s, top .3s;
+	top: -40px;
+	z-index: 99;
+	position: absolute;
+}
+.tooltip:before {
+	content: "";
+	left: 15px;
+	border: solid;
+	border-color: #222 transparent;
+	border-width: 6px 6px 0 6px;
+}
+.tooltip:hover:before{
+	opacity: 1;
+	visibility: visible;
+	top: -6px;
+}
+.tooltip:after {
+	content: attr(tooltip);
+	left: 0;
+	background: #222;
+	border-radius: 3px;
+	color: #fff;
+	padding: 0px 10px;
+	font-size: 12px;
+	line-height: 20px;
+	white-space: nowrap;
+}
+.tooltip:hover:after{
+	opacity: 1;
+	visibility: visible;
+	top: -25px;
+}
+
+.main {
+	padding-top: 51px;
+	&>header.top {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 50px;
+		background: @base;
+		border-bottom: 1px solid @link;
+		box-shadow: 0 0 10px #000;
+		z-index: 999;
+		.title {
+			font-size: 20px;
+			text-align: center;
+			line-height: 50px;
+			text-transform: uppercase;
+			font-weight: bold;
+			span {
+				color: @link-hover;
+			}
+		}
+		.right {
+			position: absolute;
+			right: 5px;
+			top: 0;
+			height: 50px;
+			line-height: 50px;
+			a {
+				font-weight: bold;
+				&:not(:hover) {
+					border: none;
+				}
+			}
+		}
+	}
+	& .notify {
+		opacity: 0;
+		position: fixed;
+		top: 0;
+		left: 0;
+		background: #000;
+		box-shadow: 0 0 10px rgba(0,0,0,0.5);
+		border-radius: 0 5px 5px 0;
+		font-weight: bold;
+		padding: 10px 10px;
+		z-index: 9999;
+		min-width: 100px;
+		max-width: 300px;
+		min-height: 10px;
+		text-align: center;
+		left: -300px;
+		transition: left 1s cubic-bezier(0,0,0.05,1), opacity .3s;
+		&.success {
+			background: #07B72A;
+			text-shadow: 0 -1px #0E631F;
+		}
+		&.error {
+			background: #AF1E1E;
+		}
+		&.info {
+			background: #4343DA;
+		}
+	}
+	& #addBox {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		padding: 100px 15px 0;
+		text-align: center;
+		z-index: 99;
+		input, button {
+			font-size: 20px;
+		}
+		input {
+			margin-right: 20px;
+			width: 290px;
+		}
+		.close {
+			position: fixed;
+			right: 10px;
+			top: 50px;
+			font-size: 50px;
+			cursor: pointer;
+			color: @link;
+			border: none;
+			&:hover {
+				color: @link-hover;
+			}
+		}
+	}
+
+	& #all-notes {
+		padding: 20px 10px;
+		text-align: justify;
+		header {
+			text-align: center;
+		}
+		&>.note {
+			&:before {
+				content: " ";
+				position: absolute;
+				top: 50%;
+				right: -20px;
+				display: block;
+				height: 25px;
+				width: 25px;
+				margin-top: -12.5px;
+			}
+			transition: opacity .3s;
+			padding: 15px 5px;
+			position: relative;
+			max-width: 500px;
+			border-bottom: 1px solid @link;
+			margin: 0 auto;
+			p {
+				margin: 0;
+			}
+			.time {
+				position: relative;
+				color: #ccc;
+				margin-top: 10px;
+			}
+			&:hover .delete {
+				display: block;
+			}
+			.delete {
+				display: none;
+				position: absolute;
+				top: 50%;
+				right: -20px;
+				border: none;
+				font-size: 25px;
+				padding: 0;
+				line-height: 0;
+				margin-top: -12.5px;
+				width: 25px;
+				height: 25px;
+			}
+		}
+	}
+}
+
+@media (max-width: 450px) {
+	.main {
+		&>header.top {
+			.title {
+				text-align: left;
+				padding-left: 5px;
+			}
+			.right a {
+				position: relative;
+				font-size: 0;
+				border: 1px solid #95acc3 !important;
+				border-radius: 3px;
+				display: block;
+				width: 30px;
+				height: 30px;
+				margin-top: 9px;
+				&:hover {
+					border-color: @link-hover !important;
+				}
+				&:after {
+					content: "+";
+					display: block;
+					font-size: 25px;
+					position: absolute;
+					top: 0px;
+					left: 0px;
+					line-height: 28px;
+					width: 28px;
+					text-align: center;
+				}
+			}
+		}
+		#addBox {
+			input, button {
+				width: 100%;
+				margin: 5px 0;
+			}
+		}
+		#all-notes {
+			padding: 10px 20px 10px 10px;
+		}
+	}
+}

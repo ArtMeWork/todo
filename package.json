@@ -1,0 +1,31 @@
+{
+  "name": "ToDo",
+  "version": "0.0.0",
+  "description": "Test app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArtMeWork/todo.git"
+  },
+  "author": "Artem Bobrov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArtMeWork/todo/issues"
+  },
+  "homepage": "https://github.com/ArtMeWork/todo",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-less": "^1.1.0",
+    "grunt-contrib-requirejs": "^0.4.4",
+    "grunt-contrib-watch": "^0.6.1",
+    "requirejs": "^2.1.22"
+  },
+  "dependencies": {
+    "http-server": "^0.8.5"
+  }
+}
