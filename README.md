@@ -1,10 +1,12 @@
-# todo
+# TODO LIST
 Test todo application (JS).
 
 MVC app using Require.js
 
 Dev tools: npm, grunt, less.
+
 ---
+
 ### Run app
 
 Open index.html in browser
