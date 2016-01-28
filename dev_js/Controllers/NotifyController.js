@@ -11,7 +11,7 @@ define([],
 			time = time ? time : 3000;
 			var dom = document.createElement('div');
 			count++;
-			dom.classList.add('notify', type);
+			dom.className += 'notify '+type;
 			dom.innerText = message;
 			document.getElementById('app').appendChild(dom);
 			if (count === 1) top = 0;

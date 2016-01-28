@@ -32,7 +32,9 @@ define(function(){
 		})();
 		this.name = name;
 		var _now = new Date();
-		this.date = Date.parse(new Date(_now.getUTCFullYear(),_now.getUTCMonth(),_now.getUTCDate(),_now.getUTCHours(),_now.getUTCMinutes(),_now.getUTCSeconds(),_now.getUTCMilliseconds())+"GMT+0000");
+		var _utc = new Date(Date.UTC(_now.getFullYear(),_now.getMonth(),_now.getDate(),_now.getHours(),_now.getMinutes(),_now.getSeconds(),_now.getMilliseconds()));
+		_utc.setUTCHours(_utc.getUTCHours() + _utc.getTimezoneOffset()/60);
+		this.date = _utc.getTime();
 	}
 
 	function updateStorage() {

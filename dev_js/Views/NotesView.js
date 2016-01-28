@@ -32,7 +32,7 @@ define(function(){
         if (data.count===0)
             document.getElementById('notes-title').innerHTML = "<h3>Вы ничего не написали.</h3>";
         _elm.style.opacity = 0;
-        setTimeout(function(){_elm.remove()},300);
+        setTimeout(function(){_elm.parentElement.removeChild(_elm);},300);
     }
 
     function update(states) {

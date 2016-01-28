@@ -14,9 +14,9 @@ define(['Models/Notes', 'Controllers/NotifyController', 'Views/AddView'], functi
 	}
 
 	function start() {
-		window.app = {
-			add: function(){
-				var _text = convertHtmlToText(document.getElementById('newNoteName').value),
+		View.render();
+		document.formAdd.onsubmit = function(){
+			var _text = convertHtmlToText(document.getElementById('newNoteName').value),
 				_status = {success:false};
 				try {
 					if (validate(_text))
@@ -28,10 +28,11 @@ define(['Models/Notes', 'Controllers/NotifyController', 'Views/AddView'], functi
 				} catch(err) {
 					Notify.err(err);
 				}
+				/*setTimeout(function(){
+					console.log('do');
+				},3000);*/
 				return false;
-			}
-		}; 
-		View.render();
+		}
 	}
 
 	return {

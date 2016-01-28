@@ -1,7 +1,7 @@
 define(function(){
 	function render() {
 		var html = '<section id="addBox">'+
-		'<form onsubmit="return app.add()">'+
+		'<form name="formAdd">'+
     '<input type="text" placeholder="Текст новой заметки" id="newNoteName" autofocus autocomplete="off" maxlength="250">'+
     '<button type="submit">Сохранить</button>'+
     '<a href="#notes" class="close">&times;</a>'+

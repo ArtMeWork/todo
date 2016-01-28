@@ -26,14 +26,15 @@ define(['Models/Notes', 'Controllers/NotifyController', 'Views/NotesView'], func
 	function timeAgo(timeStr) {
         var 
         now = new Date(),
-        utc = Date.parse(new Date(now.getUTCFullYear(),now.getUTCMonth(),now.getUTCDate(),now.getUTCHours(),now.getUTCMinutes(),now.getUTCSeconds(),now.getUTCMilliseconds())+"GMT+0000"),
-        note = new Date(now-(utc-timeStr)),
+        utc = new Date(Date.UTC(now.getFullYear(),now.getMonth(),now.getDate(),now.getHours(),now.getMinutes(),now.getSeconds(),now.getMilliseconds()));
+        utc.setUTCHours(utc.getUTCHours() + utc.getTimezoneOffset()/60);
+        var note = new Date(now-(utc-timeStr)),
         period = Math.floor((utc-timeStr)/1000),
         time = 0,
         mas = [],
         month = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'],
         fullDate = note.getDate()+" "+month[note.getMonth()]+" "+note.getFullYear()+", в "+note.getHours()+":"+note.getMinutes();
-
+        
         if(period<60) {
             time = period;
             mas = ['только что', 'секунд назад', 'секунду назад', 'секунды назад'];
