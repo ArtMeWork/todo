@@ -5,6 +5,8 @@ MVC app using Require.js
 
 Dev tools: npm, grunt, less.
 
+Support: IE9+
+
 ---
 
 ### Run app
