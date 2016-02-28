@@ -12,7 +12,7 @@ define(function(){
                 html += 
                 '<div class="note" id="note'+notes[i].id+'">'+
                 '    <p class="text">'+notes[i].name+'</p>'+
-                '    <div class="time'+(typeof notes[i].up_time!=="object"?"":" tooltip")+'" id="time'+notes[i].id+'" tooltip="'+notes[i].up_time.date+'">'+notes[i].up_time.text+'</div>'+
+                '    <div class="time tooltip" id="time'+notes[i].id+'" tooltip="'+notes[i].up_time.date+'">'+notes[i].up_time.text+'</div>'+
                 '    <button class="delete" onclick="app.delete('+notes[i].id+')">&times;</button>'+
                 '</div>';
             }

@@ -34,7 +34,6 @@ define(['Models/Notes', 'Controllers/NotifyController', 'Views/NotesView'], func
         mas = [],
         month = ['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','ноя','дек'],
         fullDate = note.getDate()+" "+month[note.getMonth()]+" "+note.getFullYear()+", в "+note.getHours()+":"+note.getMinutes();
-        
         if(period<60) {
             time = period;
             mas = ['только что', 'секунд назад', 'секунду назад', 'секунды назад'];
@@ -47,11 +46,11 @@ define(['Models/Notes', 'Controllers/NotifyController', 'Views/NotesView'], func
             time = Math.floor(period/60/60);
             mas = ['час назад', 'два часа назад', 'три часа назад', 'часа назад', 'часов назад'];
             return {text:(time>3 ? time : '') + ' ' + mas[time<4?time-1:(time>4 && time<=20)?4:time%10==1?0:(time%10>1 && time%10<5)?3:4], date: fullDate};
-        } else if(period>2160 && now.getDate()-note.getDate()===0)
+        } else if(period<86400 && now.getDate()-note.getDate()===0)
         	return {text:"сегодня в " + note.getHours()+":"+note.getMinutes(), date: fullDate};
-        else if(now.getDate()-note.getDate()===1)
+        else if(period<86400 && now.getDate()-note.getDate()===1)
             return {text:"вчера в " + note.getHours()+":"+note.getMinutes(), date: fullDate};
-        else return fullDate;
+        else return {text: fullDate, date: fullDate};
     }
 
 	function updateTime() {
