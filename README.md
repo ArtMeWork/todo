@@ -1,7 +1,7 @@
 # TODO LIST
 Test todo application (JS).
 
-MVC app using Require.js
+AMD app using Require.js
 
 Dev tools: npm, grunt, less.
 
